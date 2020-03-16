@@ -5,7 +5,7 @@
 #
 #git clone https://github.com/CSSEGISandData/COVID-19
 #cd COVID-19
-#wget https://gist.github.com/Veritas83/1f3b64135c3b565b9c5cebea926705ba/raw/bb0a002fcadd7889cdcd8f91c9c6aebe3d576875/VTSTech-COVID19.py
+#wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py
 
 import os, sys, csv
 from os import listdir
