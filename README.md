@@ -14,7 +14,7 @@ Quick Install:
 <pre>
 git clone https://github.com/CSSEGISandData/COVID-19
 cd COVID-19
-wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py<pre>
+wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py</pre>
 
 Regards,
 
