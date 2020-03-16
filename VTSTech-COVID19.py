@@ -319,11 +319,15 @@ def parsereports(calc):
 			if (calc=="t"):
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
-				print("\nTotal Cases")
+					print("\nNational Total Cases")
+				else:
+					print("\nGlobal Total Cases")
 			elif (calc=="td"):
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
-				print("\nTotal Deaths")
+					print("\nNational Total Deaths")
+				else:
+					print("\nGlobal Total Deaths")
 			elif (calc=="gdr"):
 				if (len(cc)>=1):
 					print("\nNational Death Rate")
