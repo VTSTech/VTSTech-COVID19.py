@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.46 2020-03-16 10:09:05 AM
+#v0.47 2020-03-16 10:59:15 AM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -25,54 +25,54 @@ country_dict = {
 	"ax" : "Aland",
 	"al" : "Albania",
 	"dz" : "Algeria",
-	"as" : "American Samoa"  ,
+	"as" : "American Samoa",
 	"ad" : "Andorra",
 	"ao" : "Angola" ,
-	"ai" : "Anguilla"  ,
+	"ai" : "Anguilla",
 	"aq" : "Antarctica",
 	"ag" : "Antigua and Barbuda",
 	"ar" : "Argentina" ,
 	"am" : "Armenia",
-	"aw" : "Aruba"  ,
+	"aw" : "Aruba",
 	"au" : "Australia" ,
 	"at" : "Austria",
 	"az" : "Azerbaijan",
 	"bs" : "Bahamas",
 	"bh" : "Bahrain",
 	"bd" : "Bangladesh",
-	"bb" : "Barbados"  ,
+	"bb" : "Barbados",
 	"by" : "Belarus",
 	"be" : "Belgium",
 	"bz" : "Belize" ,
-	"bj" : "Benin"  ,
+	"bj" : "Benin",
 	"bm" : "Bermuda",
 	"bt" : "Bhutan" ,
-	"bo" : "Bolivia"  ,
-	"bq" : "Bonaire, Sint Eustatius and Saba"  ,
+	"bo" : "Bolivia",
+	"bq" : "Bonaire, Sint Eustatius and Saba",
 	"ba" : "Bosnia and Herzegovina",
-	"bw" : "Botswana"  ,
+	"bw" : "Botswana",
 	"bv" : "Bouvet Island",
 	"br" : "Brazil" ,
 	"io" : "British Indian Ocean Territory" ,
-	"bn" : "Brunei Darussalam"  ,
-	"bg" : "Bulgaria"  ,
+	"bn" : "Brunei Darussalam",
+	"bg" : "Bulgaria",
 	"bf" : "Burkina Faso" ,
 	"bi" : "Burundi",
-	"kh" : "Cambodia"  ,
-	"cm" : "Cameroon"  ,
+	"kh" : "Cambodia",
+	"cm" : "Cameroon",
 	"ca" : "Canada" ,
 	"cv" : "Cabo Verde",
-	"ky" : "Cayman Islands"  ,
+	"ky" : "Cayman Islands",
 	"cf" : "Central African Republic" ,
 	"td" : "Chad",
-	"cl" : "Chile"  ,
-	"cn" : "China"  ,
+	"cl" : "Chile",
+	"cn" : "China",
 	"cx" : "Christmas Island",
-	"cc" : "Cocos (Keeling) Islands"  ,
-	"co" : "Colombia"  ,
+	"cc" : "Cocos (Keeling) Islands",
+	"co" : "Colombia",
 	"cs" : "Cruise Ship",
 	"km" : "Comoros",
-	"cg" : "Congo (Kinshasa)"  ,
+	"cg" : "Congo (Kinshasa)",
 	"cd" : "Congo (Democratic Republic of the)",
 	"ck" : "Cook Islands" ,
 	"cr" : "Costa Rica",
@@ -81,18 +81,18 @@ country_dict = {
 	"cu" : "Cuba",
 	"cw" : "Curacao",
 	"cy" : "Cyprus" ,
-	"cz" : "Czech Republic"  ,
+	"cz" : "Czech Republic",
 	"dk" : "Denmark",
-	"dj" : "Djibouti"  ,
-	"dm" : "Dominica"  ,
+	"dj" : "Djibouti",
+	"dm" : "Dominica",
 	"do" : "Dominican Republic" ,
 	"ec" : "Ecuador",
-	"eg" : "Egypt"  ,
-	"sv" : "El Salvador"  ,
-	"gq" : "Equatorial Guinea"  ,
+	"eg" : "Egypt",
+	"sv" : "El Salvador",
+	"gq" : "Equatorial Guinea",
 	"er" : "Eritrea",
 	"ee" : "Estonia",
-	"et" : "Ethiopia"  ,
+	"et" : "Ethiopia",
 	"fk" : "Falkland Islands (Malvinas)" ,
 	"fo" : "Faroe Islands",
 	"fj" : "Fiji",
@@ -101,11 +101,11 @@ country_dict = {
 	"gf" : "French Guiana",
 	"pf" : "French Polynesia",
 	"tf" : "French Southern Territories" ,
-	"ga" : "Gabon"  ,
+	"ga" : "Gabon",
 	"gm" : "Gambia" ,
 	"ge" : "Georgia",
 	"de" : "Germany",
-	"gh" : "Ghana"  ,
+	"gh" : "Ghana",
 	"gi" : "Gibraltar" ,
 	"gr" : "Greece" ,
 	"gl" : "Greenland" ,
@@ -113,107 +113,108 @@ country_dict = {
 	"gp" : "Guadeloupe",
 	"gu" : "Guam",
 	"gt" : "Guatemala" ,
-	"gg" : "Guernsey"  ,
+	"gg" : "Guernsey",
 	"gn" : "Guinea" ,
 	"gw" : "Guinea-Bissau",
 	"gy" : "Guyana" ,
-	"ht" : "Haiti"  ,
+	"ht" : "Haiti",
 	"hm" : "Heard Island and McDonald Islands" ,
-	"va" : "Holy See"  ,
-	"hn" : "Honduras"  ,
+	"va" : "Holy See",
+	"hn" : "Honduras",
 	"hk" : "Hong Kong" ,
 	"hu" : "Hungary",
 	"is" : "Iceland",
-	"in" : "India"  ,
+	"in" : "India",
 	"id" : "Indonesia" ,
-	"ir" : "Iran"  ,
+	"ir" : "Iran",
 	"iq" : "Iraq",
 	"ie" : "Ireland",
-	"im" : "Isle of Man"  ,
+	"im" : "Isle of Man",
 	"il" : "Israel" ,
-	"it" : "Italy"  ,
+	"it" : "Italy",
 	"jm" : "Jamaica",
-	"jp" : "Japan"  ,
+	"jp" : "Japan",
 	"je" : "Jersey" ,
 	"jo" : "Jordan" ,
 	"kz" : "Kazakhstan",
-	"ke" : "Kenya"  ,
-	"ki" : "Kiribati"  ,
+	"ke" : "Kenya",
+	"ki" : "Kiribati",
+	"xk" : "Kosovo",
 	"kp" : "North Korea" ,
 	"kr" : "South Korea",
 	"kw" : "Kuwait" ,
 	"kg" : "Kyrgyzstan",
-	"la" : "Lao People's Democratic Republic"  ,
+	"la" : "Lao People's Democratic Republic",
 	"lv" : "Latvia" ,
 	"lb" : "Lebanon",
 	"ls" : "Lesotho",
 	"lr" : "Liberia",
-	"ly" : "Libya"  ,
+	"ly" : "Libya",
 	"li" : "Liechtenstein",
 	"lt" : "Lithuania" ,
 	"lu" : "Luxembourg",
-	"mo" : "Macao"  ,
+	"mo" : "Macao",
 	"mk" : "North Macedonia",
 	"mg" : "Madagascar",
 	"mw" : "Malawi" ,
-	"my" : "Malaysia"  ,
-	"mv" : "Maldives"  ,
+	"my" : "Malaysia",
+	"mv" : "Maldives",
 	"ml" : "Mali",
-	"mt" : "Malta"  ,
+	"mt" : "Malta",
 	"mh" : "Marshall Islands",
 	"mq" : "Martinique",
 	"mr" : "Mauritania",
 	"mu" : "Mauritius" ,
 	"yt" : "Mayotte",
 	"mx" : "Mexico" ,
-	"fm" : "Micronesia"  ,
+	"fm" : "Micronesia",
 	"md" : "Moldova" ,
 	"mc" : "Monaco" ,
-	"mn" : "Mongolia"  ,
+	"mn" : "Mongolia",
 	"me" : "Montenegro",
 	"ms" : "Montserrat",
 	"ma" : "Morocco",
 	"mz" : "Mozambique",
 	"mm" : "Myanmar",
 	"na" : "Namibia",
-	"nr" : "Nauru"  ,
-	"np" : "Nepal"  ,
-	"nl" : "Netherlands"  ,
+	"nr" : "Nauru",
+	"np" : "Nepal",
+	"nl" : "Netherlands",
 	"nc" : "New Caledonia",
-	"nz" : "New Zealand"  ,
+	"nz" : "New Zealand",
 	"ni" : "Nicaragua" ,
-	"ne" : "Niger"  ,
+	"ne" : "Niger",
 	"ng" : "Nigeria",
 	"nu" : "Niue",
-	"nf" : "Norfolk Island"  ,
+	"nf" : "Norfolk Island",
 	"mp" : "Northern Mariana Islands" ,
 	"no" : "Norway" ,
 	"om" : "Oman",
-	"pk" : "Pakistan"  ,
-	"pw" : "Palau"  ,
+	"pk" : "Pakistan",
+	"pw" : "Palau",
 	"ps" : "occupied Palestinian territory",
 	"pa" : "Panama" ,
 	"pg" : "Papua New Guinea",
-	"py" : "Paraguay"  ,
+	"py" : "Paraguay",
 	"pe" : "Peru",
-	"ph" : "Philippines"  ,
-	"pn" : "Pitcairn"  ,
+	"ph" : "Philippines",
+	"pn" : "Pitcairn",
 	"pl" : "Poland" ,
-	"pt" : "Portugal"  ,
-	"pr" : "Puerto Rico"  ,
-	"qa" : "Qatar"  ,
+	"pt" : "Portugal",
+	"pr" : "Puerto Rico",
+	"qa" : "Qatar",
 	"re" : "Reunion",
 	"ro" : "Romania",
 	"ru" : "Russian Federation" ,
 	"rw" : "Rwanda" ,
 	"bl" : "Saint Barthelemy",
-	"sh" : "Saint Helena, Ascension and Tristan da Cunha"  ,
+	"sh" : "Saint Helena, Ascension and Tristan da Cunha",
 	"kn" : "Saint Kitts and Nevis" ,
-	"lc" : "Saint Lucia"  ,
-	"mf" : "Saint Martin (French part)"  ,
+	"lc" : "Saint Lucia",
+	"mf" : "Saint Martin (French part)",
 	"pm" : "Saint Pierre and Miquelon",
-	"vc" : "Saint Vincent and the Grenadines"  ,
-	"ws" : "Samoa"  ,
+	"vc" : "Saint Vincent and the Grenadines",
+	"ws" : "Samoa",
 	"sm" : "San Marino",
 	"st" : "Sao Tome and Principe" ,
 	"sa" : "Saudi Arabia" ,
@@ -223,30 +224,30 @@ country_dict = {
 	"sl" : "Sierra Leone" ,
 	"sg" : "Singapore" ,
 	"sx" : "Sint Maarten (Dutch part)",
-	"sk" : "Slovakia"  ,
-	"si" : "Slovenia"  ,
+	"sk" : "Slovakia",
+	"si" : "Slovenia",
 	"sb" : "Solomon Islands" ,
 	"so" : "Somalia",
 	"za" : "South Africa" ,
-	"gs" : "South Georgia and the South Sandwich Islands"  ,
-	"ss" : "South Sudan"  ,
-	"es" : "Spain"  ,
+	"gs" : "South Georgia and the South Sandwich Islands",
+	"ss" : "South Sudan",
+	"es" : "Spain",
 	"lk" : "Sri Lanka" ,
-	"sd" : "Sudan"  ,
-	"sr" : "Suriname"  ,
+	"sd" : "Sudan",
+	"sr" : "Suriname",
 	"sj" : "Svalbard and Jan Mayen",
 	"sz" : "Swaziland" ,
 	"se" : "Sweden" ,
-	"ch" : "Switzerland"  ,
-	"sy" : "Syrian Arab Republic"  ,
+	"ch" : "Switzerland",
+	"sy" : "Syrian Arab Republic",
 	"tw" : "Taiwan, Province of China",
 	"tj" : "Tajikistan",
 	"tz" : "Tanzania, United Republic of",
-	"th" : "Thailand"  ,
-	"tl" : "Timor-Leste"  ,
+	"th" : "Thailand",
+	"tl" : "Timor-Leste",
 	"tg" : "Togo",
 	"tk" : "Tokelau",
-	"to" : "Tonga"  ,
+	"to" : "Tonga",
 	"tt" : "Trinidad and Tobago",
 	"tn" : "Tunisia",
 	"tr" : "Turkey" ,
@@ -255,7 +256,7 @@ country_dict = {
 	"tv" : "Tuvalu" ,
 	"ug" : "Uganda" ,
 	"ua" : "Ukraine",
-	"ae" : "United Arab Emirates"  ,
+	"ae" : "United Arab Emirates",
 	"gb" : "United Kingdom",
 	"us" : "US" ,
 	"um" : "United States Minor Outlying Islands" ,
@@ -263,12 +264,12 @@ country_dict = {
 	"uz" : "Uzbekistan",
 	"vu" : "Vanuatu",
 	"ve" : "Venezuela (Bolivarian Republic of)",
-	"vn" : "Viet Nam"  ,
+	"vn" : "Viet Nam",
 	"vg" : "Virgin Islands (British)" ,
 	"vi" : "Virgin Islands (U.S.)" ,
-	"wf" : "Wallis and Futuna"  ,
-	"eh" : "Western Sahara"  ,
-	"ye" : "Yemen"  ,
+	"wf" : "Wallis and Futuna",
+	"eh" : "Western Sahara",
+	"ye" : "Yemen",
 	"zm" : "Zambia" ,
 	"zw" : "Zimbabwe"
 		}
@@ -283,7 +284,7 @@ def getfn(msg):
 		elif (".py" in script_fn[x]):
 			return script_fn[x]
 def banner():	
-	print("COVID-19 JHU.EDU CSSE Data Analytics\nv0.46 Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
+	print("COVID-19 JHU.EDU CSSE Data Analytics\nv0.47 Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
 def usage():
 	spc=" "
 	print("Usage:",getfn(sys.argv[0]),"-l")
@@ -334,7 +335,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("\nGlobal Death Rate")
-			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 		elif (calc=="dav")or(calc=="dad")or(calc=="din")or(calc=="dnc")or(calc=="dgf")or(calc=="dnd"):
 			if (calc=="dav"):
 				p_cases = 0
@@ -356,7 +357,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("Global Average Daily New Cases:",round(davg_cases,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 			elif (calc=="dad"):
 				p_deaths = 0
 				c_deaths = 0
@@ -377,7 +378,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("Global Average Daily New Deaths:",round(davg_deaths,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 			elif (calc=="dnc"):
 				p_cases = 0
 				c_cases = 0
@@ -402,7 +403,7 @@ def parsereports(calc):
 					print("\nNational Daily New Cases")
 				else:
 					print("\n\nGlobal Daily New Cases\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 			elif (calc=="dnd"):
 				p_deaths = 0
 				c_deaths = 0
@@ -427,7 +428,7 @@ def parsereports(calc):
 					print("\nNational Daily New Deaths")
 				else:
 					print("\n\nGlobal Daily New Deaths\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 			elif (calc=="din"):
 				p_cases = 0
 				c_cases = 0
@@ -451,7 +452,7 @@ def parsereports(calc):
 					t_days=i
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
-				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 			elif (calc=="dgf"):
 				p_cases = 0
 				c_cases = 0
@@ -481,7 +482,7 @@ def parsereports(calc):
 					print("Country Filter:", getcc(cc))
 				else:
 					print("\n\nGlobal Daily Growth Factor")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 		elif (calc=="drc"):
 				p_gdr = 0
 				c_gdr = 0
@@ -514,7 +515,7 @@ def parsereports(calc):
 					print("Country Filter:", getcc(cc))
 				else:
 					print("\n\nGlobal Daily Death Rate Change")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.46 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
 	else:
 		print("Error! This mode requires the -a parameter!")
 def parsereport(report,calc):
