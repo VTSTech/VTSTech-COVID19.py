@@ -9,6 +9,7 @@ Screenshot: <img src="https://camo.githubusercontent.com/7565f9190a3a0e068865bac
 
 Quick Install:
 
-# git clone https://github.com/CSSEGISandData/COVID-19
-# cd COVID-19
-# wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py
+<pre>
+git clone https://github.com/CSSEGISandData/COVID-19
+cd COVID-19
+wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py<pre>
