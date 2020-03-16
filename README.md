@@ -19,5 +19,7 @@ wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.
 Regards,
 
 Nigel Todman
+
 Software Developer/Technical Consultant
+
 VTSTech Veritas Technical Solutions
