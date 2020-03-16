@@ -7,6 +7,8 @@ My name is Nigel Todman, I'm a software developer from Canada. I've written a Py
 
 Screenshot: <img src="https://camo.githubusercontent.com/7565f9190a3a0e068865bacaeb0cf301413e65d4/68747470733a2f2f692e6779617a6f2e636f6d2f39313064306336636435366332663365633565383433303030306530363164392e706e67">
 
+Data Source: https://github.com/CSSEGISandData/COVID-19
+
 Quick Install:
 
 <pre>
