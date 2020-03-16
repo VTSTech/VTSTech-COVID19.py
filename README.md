@@ -15,3 +15,9 @@ Quick Install:
 git clone https://github.com/CSSEGISandData/COVID-19
 cd COVID-19
 wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py<pre>
+
+Regards,
+
+Nigel Todman
+Software Developer/Technical Consultant
+VTSTech Veritas Technical Solutions
