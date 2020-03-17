@@ -5,7 +5,7 @@ Hello,
 
 My name is Nigel Todman, I'm a software developer from Canada. I've written a Python script to parse the JHU CSSE Data from GitHub and produce various stats and metrics. Perhaps this would be useful to yourself or your colleagues. I often found myself making these calculations by hand every day. And now I can produce these stats globally or nationally rather quickly. (or even automatically)
 
-Screenshot: <img src="https://i.gyazo.com/3c45aeecd5009d7b774d5c8d594fba0a.png">
+Screenshot: <img src="https://i.gyazo.com/0efbc40264dae68177287597e8514f11.png">
 
 Data Source: https://github.com/CSSEGISandData/COVID-19
 
