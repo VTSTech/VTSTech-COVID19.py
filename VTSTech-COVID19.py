@@ -292,7 +292,7 @@ def usage():
 	print(spc*6,getfn(sys.argv[0]),"-a -dav\n")
 	print("-v",spc*17,"verbose mode\n-l",spc*17,"list daily reports available\n-d MM-DD-YYYY",spc*6,"use this daily report\n-a",spc*18,end='')
 	print("use all available reports\n-c US",spc*14,"filter by this country (ISO 3166-1 Alpha-2)\n-t",spc*17,"calculate global total cases\n-td",end='')
-	print(spc*17,"calculate global total deaths\n-gdr",spc*15,"calculate global death rate (use with -c for national)\n-dav",spc*15,"calculate daily average new cases\n-dad",end='')
+	print(spc*17,"calculate global total deaths\n-tr",spc*16,"calculate global total recovered\n-gdr",spc*15,"calculate global death rate (use with -c for national)\n-dav",spc*15,"calculate daily average new cases\n-dad",end='')
 	print(spc*16,"calculate daily average new deaths\n-dnc",spc*15,"calculate daily new cases\n-dnd",spc*15,"calculate daily new deaths\n-dgf",spc*16,end='')
 	print("calculate daily growth factor\n-drc",spc*15,"calculate daily death rate change\n-din",spc*15,"find largest daily case increases")
 def getreports():
@@ -311,7 +311,7 @@ def parsereports(calc):
 	i=0
 	#print("DEBUG:", mode)
 	if ("allreports" in mode):
-		if (calc=="t") or (calc=="td") or (calc=="gdr"):
+		if (calc=="t") or (calc=="td") or (calc=="tr") or (calc=="gdr"):
 			for line in reports.split(".csv"):
 				line=line+".csv"
 				if (len(line)>4):
@@ -329,6 +329,12 @@ def parsereports(calc):
 					print("\nNational Total Deaths")
 				else:
 					print("\nGlobal Total Deaths")
+			elif (calc=="tr"):
+				if (len(cc)>=1):
+					print("\nCountry Filter:", getcc(cc))
+					print("\nNational Total Recovered")
+				else:
+					print("\nGlobal Total Recovered")
 			elif (calc=="gdr"):
 				if (len(cc)>=1):
 					print("\nNational Death Rate")
@@ -523,12 +529,13 @@ def parsereport(report,calc):
 	global cc
 	c_country=""
 	c_prov=""
-	c_cases=""
-	c_deaths=""
-	c_recov=""
+	c_cases=0
+	c_deaths=0
+	c_recov=0
 	c_updated=""
 	t_cases=0
 	t_deaths=0
+	t_recov=0
 	gdr=0.0
 	file_to_open = Path("csse_covid_19_data/csse_covid_19_daily_reports/" + report)
 	if file_to_open.exists():
@@ -548,7 +555,9 @@ def parsereport(report,calc):
 						if (len(row[4])>0):
 							c_deaths=int(row[4])
 							t_deaths=int(t_deaths+c_deaths)
-						c_recov=row[5]
+						if (len(row[5])>0):
+							c_recov=int(row[5])
+							t_recov=int(t_recov+c_recov)
 				else:
 						c_prov=row[0]
 						c_country=row[1]
@@ -559,16 +568,21 @@ def parsereport(report,calc):
 						if (len(row[4])>0):
 							c_deaths=int(row[4])
 							t_deaths=int(t_deaths+c_deaths)
-						c_recov=row[5]					
+						if (len(row[5])>0):
+							c_recov=int(row[5])
+							t_recov=int(t_recov+c_recov)						
 			x=x+1
 		if (calc==""):
-			print("Please select a metric to calculate: t, td, din, dav, dad, dnc, dnd, drc, gdr")
+			print("Please specify a metric to calculate: -t, -td, -tr, -din, -dav, -dad, -dnc, -dnd, -drc, -gdr")
 		elif (calc=="t"):
 			if (mode=="onereport"):print("Total Cases:",t_cases)
 			return(t_cases)
 		elif (calc=="td"):
 			if (mode=="onereport"):print("Total Deaths:",t_deaths)
 			return(t_deaths)
+		elif (calc=="tr"):
+			if (mode=="onereport"):print("Total Recovered:",t_recov)
+			return(t_recov)
 		elif (calc=="gdr"):
 			if (t_deaths!=0) and (t_cases!=0):
 				gdr=round(float(t_deaths/t_cases)*100,3)
@@ -628,6 +642,8 @@ for x in range(0,totalargs,1):
 		calc="t"
 	elif (sys.argv[x] == "-td"):
 		calc="td"
+	elif (sys.argv[x] == "-tr"):
+		calc="tr"
 	elif (sys.argv[x] == "-gdr"):
 		calc="gdr"
 	elif (sys.argv[x] == "-dav"):
