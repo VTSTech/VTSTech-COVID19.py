@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.47 2020-03-16 10:59:15 AM
+#v0.48 2020-03-17 6:00:47 PM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -288,7 +288,7 @@ def banner():
 def usage():
 	spc=" "
 	print("Usage:",getfn(sys.argv[0]),"-l")
-	print(spc*6,getfn(sys.argv[0]),"-d 03-14-2020")
+	print(spc*6,getfn(sys.argv[0]),"-d 03-17-2020")
 	print(spc*6,getfn(sys.argv[0]),"-a -dav\n")
 	print("-v",spc*17,"verbose mode\n-l",spc*17,"list daily reports available\n-d MM-DD-YYYY",spc*6,"use this daily report\n-a",spc*18,end='')
 	print("use all available reports\n-c",spc*17,"filter by this country (ISO 3166-1 Alpha-2)\n-t",spc*17,"calculate global total cases\n-td",end='')
@@ -620,6 +620,9 @@ for x in range(0,totalargs,1):
 		mode="allreports"
 	elif (sys.argv[x] == "-d"):
 		mode="onereport"
+		if (len(sys.argv[x+1]) != 10):
+			print("Error: Invalid daily report specified! (-d) Expected format: MM-DD-YYYY")
+			quit()
 		report=str(sys.argv[x+1]+".csv")
 	elif (sys.argv[x] == "-t"):
 		calc="t"
@@ -642,5 +645,8 @@ for x in range(0,totalargs,1):
 	elif (sys.argv[x] == "-drc"):
 		calc="drc"
 	elif (sys.argv[x] == "-c"):
-		cc=sys.argv[x+1]
+		cc=str(sys.argv[x+1]).lower()
+		if (len(cc) != 2):
+			print("Error: Invalid country code specified! (-c) Expected format: US")
+			quit()
 main(mode,report,cc,calc)
