@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.48 2020-03-17 6:00:47 PM
+#v0.48 2020-03-17 6:09:05 PM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -284,14 +284,14 @@ def getfn(msg):
 		elif (".py" in script_fn[x]):
 			return script_fn[x]
 def banner():	
-	print("COVID-19 JHU.EDU CSSE Data Analytics\nv0.47 Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
+	print("COVID-19 JHU.EDU CSSE Data Analytics\nv0.48 Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
 def usage():
 	spc=" "
 	print("Usage:",getfn(sys.argv[0]),"-l")
 	print(spc*6,getfn(sys.argv[0]),"-d 03-17-2020")
 	print(spc*6,getfn(sys.argv[0]),"-a -dav\n")
 	print("-v",spc*17,"verbose mode\n-l",spc*17,"list daily reports available\n-d MM-DD-YYYY",spc*6,"use this daily report\n-a",spc*18,end='')
-	print("use all available reports\n-c",spc*17,"filter by this country (ISO 3166-1 Alpha-2)\n-t",spc*17,"calculate global total cases\n-td",end='')
+	print("use all available reports\n-c US",spc*14,"filter by this country (ISO 3166-1 Alpha-2)\n-t",spc*17,"calculate global total cases\n-td",end='')
 	print(spc*17,"calculate global total deaths\n-gdr",spc*15,"calculate global death rate (use with -c for national)\n-dav",spc*15,"calculate daily average new cases\n-dad",end='')
 	print(spc*16,"calculate daily average new deaths\n-dnc",spc*15,"calculate daily new cases\n-dnd",spc*15,"calculate daily new deaths\n-dgf",spc*16,end='')
 	print("calculate daily growth factor\n-drc",spc*15,"calculate daily death rate change\n-din",spc*15,"find largest daily case increases")
@@ -335,7 +335,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("\nGlobal Death Rate")
-			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 		elif (calc=="dav")or(calc=="dad")or(calc=="din")or(calc=="dnc")or(calc=="dgf")or(calc=="dnd"):
 			if (calc=="dav"):
 				p_cases = 0
@@ -357,7 +357,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("Global Average Daily New Cases:",round(davg_cases,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 			elif (calc=="dad"):
 				p_deaths = 0
 				c_deaths = 0
@@ -378,7 +378,7 @@ def parsereports(calc):
 					print("\nCountry Filter:", getcc(cc))
 				else:
 					print("Global Average Daily New Deaths:",round(davg_deaths,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 			elif (calc=="dnc"):
 				p_cases = 0
 				c_cases = 0
@@ -403,7 +403,7 @@ def parsereports(calc):
 					print("\nNational Daily New Cases")
 				else:
 					print("\n\nGlobal Daily New Cases\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 			elif (calc=="dnd"):
 				p_deaths = 0
 				c_deaths = 0
@@ -428,7 +428,7 @@ def parsereports(calc):
 					print("\nNational Daily New Deaths")
 				else:
 					print("\n\nGlobal Daily New Deaths\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 			elif (calc=="din"):
 				p_cases = 0
 				c_cases = 0
@@ -452,7 +452,7 @@ def parsereports(calc):
 					t_days=i
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
-				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 			elif (calc=="dgf"):
 				p_cases = 0
 				c_cases = 0
@@ -482,7 +482,7 @@ def parsereports(calc):
 					print("Country Filter:", getcc(cc))
 				else:
 					print("\n\nGlobal Daily Growth Factor")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 		elif (calc=="drc"):
 				p_gdr = 0
 				c_gdr = 0
@@ -515,7 +515,7 @@ def parsereports(calc):
 					print("Country Filter:", getcc(cc))
 				else:
 					print("\n\nGlobal Daily Death Rate Change")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.47 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
 	else:
 		print("Error! This mode requires the -a parameter!")
 def parsereport(report,calc):
