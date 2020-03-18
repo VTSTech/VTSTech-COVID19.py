@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.48 2020-03-17 6:09:05 PM
+#v0.49 2020-03-17 11:47:33 PM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -18,9 +18,11 @@ verbose=0
 mode=""
 report=""
 cc="" #ISO 3166-1 Alpha-2
+pc="" #ISO 3166-2
 calc=""
+build="0.49"
 
-country_dict = {
+cc_dict = {
 	"af" : "Afghanistan",
 	"ax" : "Aland",
 	"al" : "Albania",
@@ -273,9 +275,83 @@ country_dict = {
 	"zm" : "Zambia" ,
 	"zw" : "Zimbabwe"
 		}
+pc_dict = {
+	"CA-AB" : "Alberta",
+	"CA-BC" : "British Columbia",
+	"CA-MB" : "Manitoba",
+	"CA-NB" : "New Brunswick",
+	"CA-NL" : "Newfoundland and Labrador",
+	"CA-NS" : "Nova Scotia",
+	"CA-NT" : "Northwest Territories",
+	"CA-NU" : "Nunavut",
+	"CA-ON" : "Ontario",
+	"CA-PE" : "Prince Edward Island",
+	"CA-QC" : "Quebec",
+	"CA-SK" : "Saskatchewan",
+	"US-AL" : "Alabama",
+	"US-AK" : "Alaska",
+	"US-AZ" : "Arizona",
+	"US-AR" : "Arkansas",
+	"US-CA" : "California",
+	"US-CO" : "Colorado",
+	"US-CT" : "Connecticut",
+	"US-DE" : "Delaware",
+	"US-FL" : "Florida",
+	"US-GA" : "Georgia",
+	"US-HI" : "Hawaii",
+	"US-ID" : "Idaho",
+	"US-IL" : "Illinois",
+	"US-IN" : "Indiana",
+	"US-IA" : "Iowa",
+	"US-KS" : "Kansas",
+	"US-KY" : "Kentucky",
+	"US-LA" : "Louisiana",
+	"US-ME" : "Maine",
+	"US-MD" : "Maryland",
+	"US-MA" : "Massachusetts",
+	"US-MI" : "Michigan",
+	"US-MN" : "Minnesota",
+	"US-MS" : "Mississippi",
+	"US-MO" : "Missouri",
+	"US-MT" : "Montana",
+	"US-NE" : "Nebraska",
+	"US-NV" : "Nevada",
+	"US-NH" : "New Hampshire",
+	"US-NJ" : "New Jersey",
+	"US-NM" : "New Mexico",
+	"US-NY" : "New York",
+	"US-NC" : "North Carolina",
+	"US-ND" : "North Dakota",
+	"US-OH" : "Ohio",
+	"US-OK" : "Oklahoma",
+	"US-OR" : "Oregon",
+	"US-PA" : "Pennsylvania",
+	"US-RI" : "Rhode Island",
+	"US-SC" : "South Carolina",
+	"US-SD" : "South Dakota",
+	"US-TN" : "Tennessee",
+	"US-TX" : "Texas",
+	"US-UT" : "Utah",
+	"US-VT" : "Vermont",
+	"US-VA" : "Virginia",
+	"US-WA" : "Washington",
+	"US-WV" : "West Virginia",
+	"US-WI" : "Wisconsin",
+	"US-WY" : "Wyoming",
+	"US-DC" : "District of Columbia",
+	"US-AS" : "American Samoa",
+	"US-GU" : "Guam",
+	"US-MP" : "Northern Mariana Islands",
+	"US-PR" : "Puerto Rico",
+	"US-UM" : "United States Minor Outlying Islands",
+	"US-VI" : "Virgin Islands"		
+}
 def getcc(cc):
-    return country_dict[cc.lower()]
-    #thx hdbo		
+    return cc_dict[cc.lower()]
+    #thx hdbo
+def getpc(pc):
+    #print("Debug:", pc_dict[pc.upper()])
+    return pc_dict[pc.upper()]
 def getfn(msg):
 	script_fn = msg.split("\\")
 	for x in range(0,len(script_fn),1):
@@ -284,14 +360,14 @@ def getfn(msg):
 		elif (".py" in script_fn[x]):
 			return script_fn[x]
 def banner():	
-	print("COVID-19 JHU.EDU CSSE Data Analytics\nv0.48 Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
+	print("COVID-19 JHU.EDU CSSE Data Analytics\nv"+build+" Written by VTSTech (www.VTS-Tech.org)\nData Source: https://github.com/CSSEGISandData/COVID-19\n")
 def usage():
 	spc=" "
 	print("Usage:",getfn(sys.argv[0]),"-l")
 	print(spc*6,getfn(sys.argv[0]),"-d 03-17-2020")
 	print(spc*6,getfn(sys.argv[0]),"-a -dav\n")
 	print("-v",spc*17,"verbose mode\n-l",spc*17,"list daily reports available\n-d MM-DD-YYYY",spc*6,"use this daily report\n-a",spc*18,end='')
-	print("use all available reports\n-c US",spc*14,"filter by this country (ISO 3166-1 Alpha-2)\n-t",spc*17,"calculate global total cases (use with ",end='')
+	print("use all available reports\n-c US",spc*14,"filter by this country (ISO 3166-1 Alpha-2)\n-p US-NY",spc*11,"filter by this province/state (ISO-3166-2)\n-t",spc*17,"calculate global total cases (use with ",end='')
 	print("-c for national)\n-td",spc*16,"calculate global total deaths\n-tr",spc*16,"calculate global total recovered\n-gdr",spc*15,"calculate global ",end='')
 	print("death rate\n-grr",spc*15,"calculate global recovery rate\n-dav",spc*15,"calculate daily average new cases\n-dad",spc*15,"calculate daily average new deaths\n-dnc",spc*15,"calculate daily new cases\n-dnd",spc*15,"calculate daily new deaths\n-dgf",spc*16,end='')
 	print("calculate daily growth factor\n-drc",spc*15,"calculate daily death rate change\n-din",spc*15,"find largest daily case increases")
@@ -321,33 +397,53 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
 					print("\nNational Total Cases")
+				elif (len(pc)>=1):
+					print("\nCountry Filter:", getcc(pc[0:2]))
+					print("Prov/State Filter:", getpc(pc))
+					print("\nTotal Cases")
 				else:
 					print("\nGlobal Total Cases")
 			elif (calc=="td"):
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
 					print("\nNational Total Deaths")
+				elif (len(pc)>=1):
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
+					print("\nTotal Deaths")
 				else:
 					print("\nGlobal Total Deaths")
 			elif (calc=="tr"):
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
 					print("\nNational Total Recovered")
+				elif (len(pc)>=1):
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
+					print("\nTotal Recovered")
 				else:
 					print("\nGlobal Total Recovered")
 			elif (calc=="gdr"):
 				if (len(cc)>=1):
 					print("\nNational Death Rate")
 					print("\nCountry Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("\nDeath Rate")
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("\nGlobal Death Rate")
 			elif (calc=="grr"):
 				if (len(cc)>=1):
 					print("\nNational Recovery Rate")
 					print("\nCountry Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("\nRecovery Rate")
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("\nGlobal Recovery Rate")
-			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+			print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 		elif (calc=="dav")or(calc=="dad")or(calc=="din")or(calc=="dnc")or(calc=="dgf")or(calc=="dnd"):
 			if (calc=="dav"):
 				p_cases = 0
@@ -367,9 +463,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("National Average Daily New Cases:",round(davg_cases,2))
 					print("\nCountry Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("Average Daily New Cases:",round(davg_cases,2))
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("Global Average Daily New Cases:",round(davg_cases,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="dad"):
 				p_deaths = 0
 				c_deaths = 0
@@ -388,9 +488,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("National Average Daily New Deaths:",round(davg_deaths,2))
 					print("\nCountry Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("Average Daily New Deaths:",round(davg_deaths,2))
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("Global Average Daily New Deaths:",round(davg_deaths,2))
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="dnc"):
 				p_cases = 0
 				c_cases = 0
@@ -413,9 +517,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("\n\nCountry Filter:", getcc(cc))
 					print("\nNational Daily New Cases")
+				elif (len(pc)>=1):
+					print("\n\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
+					print("\nDaily New Cases")
 				else:
 					print("\n\nGlobal Daily New Cases\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="dnd"):
 				p_deaths = 0
 				c_deaths = 0
@@ -438,9 +546,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("\n\nCountry Filter:", getcc(cc))
 					print("\nNational Daily New Deaths")
+				elif (len(pc)>=1):
+					print("\n\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
+					print("\nDaily New Deaths")
 				else:
 					print("\n\nGlobal Daily New Deaths\n")
-				print("COVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("COVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="din"):
 				p_cases = 0
 				c_cases = 0
@@ -464,7 +576,10 @@ def parsereports(calc):
 					t_days=i
 				if (len(cc)>=1):
 					print("\nCountry Filter:", getcc(cc))
-				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				elif (len(cc)>=1):
+					print("\nCountry Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
+				print("\n\nLargest Daily New Cases\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="dgf"):
 				p_cases = 0
 				c_cases = 0
@@ -492,9 +607,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("\n\nNational Daily Growth Factor")
 					print("Country Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("\n\nDaily Growth Factor")
+					print("Country Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("\n\nGlobal Daily Growth Factor")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 		elif (calc=="drc"):
 				p_gdr = 0
 				c_gdr = 0
@@ -525,9 +644,13 @@ def parsereports(calc):
 				if (len(cc)>=1):
 					print("\n\nNational Daily Death Rate Change")
 					print("Country Filter:", getcc(cc))
+				elif (len(pc)>=1):
+					print("\n\nDaily Death Rate Change")
+					print("Country Filter:", getcc(pc[0:2].lower()))
+					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
 					print("\n\nGlobal Daily Death Rate Change")
-				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v0.48 by VTSTech Complete.")
+				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 	else:
 		print("Error! This mode requires the -a parameter!")
 def parsereport(report,calc):
@@ -553,6 +676,20 @@ def parsereport(report,calc):
 			if (x!=0):
 				if (len(cc)>=1):
 					if (getcc(cc) in row[1]):
+						c_prov=row[0]
+						c_country=row[1]
+						c_updated=row[2]
+						if (len(row[3])>0):
+							c_cases=int(row[3])
+							t_cases=int(t_cases+c_cases)
+						if (len(row[4])>0):
+							c_deaths=int(row[4])
+							t_deaths=int(t_deaths+c_deaths)
+						if (len(row[5])>0):
+							c_recov=int(row[5])
+							t_recov=int(t_recov+c_recov)
+				elif (len(pc)>=1):
+					if (getpc(pc) in row[0]):
 						c_prov=row[0]
 						c_country=row[1]
 						c_updated=row[2]
@@ -676,6 +813,11 @@ for x in range(0,totalargs,1):
 		calc="dgf"
 	elif (sys.argv[x] == "-drc"):
 		calc="drc"
+	elif (sys.argv[x] == "-p"):
+		pc=str(sys.argv[x+1]).upper()
+		if (len(pc) != 5):
+			print("Error: Invalid province/state code specified! (-p) Expected format: US-TX")
+			quit()
 	elif (sys.argv[x] == "-c"):
 		cc=str(sys.argv[x+1]).lower()
 		if (len(cc) != 2):
