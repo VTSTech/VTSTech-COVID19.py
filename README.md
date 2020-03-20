@@ -45,25 +45,29 @@ VTSTech-COVID19.py           100%[============================================>]
 
 C:\Users\VTSTech\COVID-19><b>VTSTech-COVID19.py</b>
 COVID-19 JHU.EDU CSSE Data Analytics
-v0.47 Written by VTSTech (www.VTS-Tech.org)
+v0.50 Written by VTSTech (www.VTS-Tech.org)
 Data Source: https://github.com/CSSEGISandData/COVID-19
 
 Usage: VTSTech-COVID19.py -l
-       VTSTech-COVID19.py -d 03-14-2020
+       VTSTech-COVID19.py -d 03-17-2020
        VTSTech-COVID19.py -a -dav
 
 -v                   verbose mode
 -l                   list daily reports available
 -d MM-DD-YYYY        use this daily report
 -a                   use all available reports
--c                   filter by this country (ISO 3166-1 Alpha-2)
--t                   calculate global total cases
+-c US                filter by this country (ISO 3166-1 Alpha-2)
+-p US-NY             filter by this province/state (ISO-3166-2)
+-t                   calculate global total cases (use with -c or -p to filter)
 -td                  calculate global total deaths
--gdr                 calculate global death rate (use with -c for national)
+-tr                  calculate global total recovered
+-gdr                 calculate global death rate
+-grr                 calculate global recovery rate
 -dav                 calculate daily average new cases
 -dad                 calculate daily average new deaths
 -dnc                 calculate daily new cases
 -dnd                 calculate daily new deaths
+-dnr                 calculate daily new recovered
 -dgf                 calculate daily growth factor
 -drc                 calculate daily death rate change
 -din                 find largest daily case increases
