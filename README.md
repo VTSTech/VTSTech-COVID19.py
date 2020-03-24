@@ -9,6 +9,10 @@ Screenshot: <img src="https://i.gyazo.com/49e85c5955e71c01daf9071348d32404.png">
 
 Data Source: https://github.com/CSSEGISandData/COVID-19
 
+<i>Note: As of v0.52 this script now incorperates it's own copy of JHU CSSE COVID-19 Data
+
+As of 03/23/2020 with the latest format change, this repo is now hosting a format shifted copy of JHU CSSE Data to conform to the historical format.</i>
+
 Quick Install:
 
 <pre>
