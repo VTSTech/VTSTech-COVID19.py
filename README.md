@@ -15,64 +15,31 @@ Quick Install:
 Microsoft Windows [Version 10.0.18362.719]
 (c) 2019 Microsoft Corporation. All rights reserved.
 
-C:\Users\VTSTech><b>git clone https://github.com/CSSEGISandData/COVID-19</b>
-Cloning into 'COVID-19'...
-remote: Enumerating objects: 9, done.
-remote: Counting objects: 100% (9/9), done.
-remote: Compressing objects: 100% (7/7), done.
-remote: Total 14711 (delta 2), reused 2 (delta 0), pack-reused 14702
-Receiving objects: 100% (14711/14711), 47.11 MiB | 7.81 MiB/s, done.
-Resolving deltas: 100% (7056/7056), done.
+C:\TEMP><b>git clone https://github.com/Veritas83/VTSTech-COVID19.py</b>
+Cloning into 'VTSTech-COVID19.py'...
+remote: Enumerating objects: 139, done.
+remote: Counting objects: 100% (139/139), done.
+remote: Compressing objects: 100% (84/84), done.
+remote: Total 139 (delta 68), reused 125 (delta 54), pack-reused 0
+Receiving objects: 100% (139/139), 201.86 KiB | 1.58 MiB/s, done.
+Resolving deltas: 100% (68/68), done.
 
-C:\Users\VTSTech><b>cd COVID-19</b>
+C:\TEMP><b>cd VTSTech-COVID19.py</b>
 
-C:\Users\VTSTech\COVID-19><b>wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py</b>
---2020-03-17 17:48:44--  https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py
-Resolving github.com (github.com)... 140.82.112.4
-Connecting to github.com (github.com)|140.82.112.4|:443... connected.
-HTTP request sent, awaiting response... 302 Found
-Location: https://raw.githubusercontent.com/Veritas83/VTSTech-COVID19.py/master/VTSTech-COVID19.py [following]
---2020-03-17 17:48:45--  https://raw.githubusercontent.com/Veritas83/VTSTech-COVID19.py/master/VTSTech-COVID19.py
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.124.133
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.124.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 17993 (18K) [text/plain]
-Saving to: 'VTSTech-COVID19.py'
-
-VTSTech-COVID19.py           100%[============================================>]  17.57K  --.-KB/s    in 0.02s
-
-2020-03-17 17:48:45 (804 KB/s) - 'VTSTech-COVID19.py' saved [17993/17993]
-
-C:\Users\VTSTech\COVID-19><b>VTSTech-COVID19.py</b>
+C:\TEMP\VTSTech-COVID19.py><b>VTSTech-COVID19.py -a -dnc</b>
 COVID-19 JHU.EDU CSSE Data Analytics
-v0.50 Written by VTSTech (www.VTS-Tech.org)
+v0.52 Written by VTSTech (www.VTS-Tech.org)
 Data Source: https://github.com/CSSEGISandData/COVID-19
 
-Usage: VTSTech-COVID19.py -l
-       VTSTech-COVID19.py -d 03-17-2020
-       VTSTech-COVID19.py -a -dav
+Daily New Cases:
 
--v                   verbose mode
--l                   list daily reports available
--d MM-DD-YYYY        use this daily report
--a                   use all available reports
--c US                filter by this country (ISO 3166-1 Alpha-2)
--p US-NY             filter by this province/state (ISO-3166-2)
--t                   calculate global total cases (use with -c or -p to filter)
--td                  calculate global total deaths
--tr                  calculate global total recovered
--gdr                 calculate global death rate
--grr                 calculate global recovery rate
--dav                 calculate daily average new cases
--dad                 calculate daily average new deaths
--dnc                 calculate daily new cases
--dnd                 calculate daily new deaths
--dnr                 calculate daily new recovered
--dgf                 calculate daily growth factor
--drc                 calculate daily death rate change
--din                 find largest daily case increases
 
-C:\Users\VTSTech\COVID-19></pre>
+01-22-2020 555
+01-23-2020 98
+01-24-2020 288
+01-25-2020 497
+..
+</pre>
 
 Regards,
 
