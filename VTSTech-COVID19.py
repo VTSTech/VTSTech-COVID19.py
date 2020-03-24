@@ -20,8 +20,8 @@ report=""
 cc="" #ISO 3166-1 Alpha-2
 pc="" #ISO 3166-2
 calc=""
-build="0.50"
-
+build="0.51"
+k_cnt=0
 cc_dict = {
 	"af" : "Afghanistan",
 	"ax" : "Aland",
@@ -347,7 +347,7 @@ pc_dict = {
 	"US-VI" : "Virgin Islands"		
 }
 def getcc(cc):
-    return cc_dict[cc.lower()]
+   	return cc_dict[cc.lower()]
     #thx hdbo
 def getpc(pc):
     #print("Debug:", pc_dict[pc.upper()])
@@ -740,8 +740,8 @@ def parsereport(report,calc):
 		x=0
 		for row in cssereader:
 			if (x!=0):
-				if (len(cc)>=1):
-					if (getcc(cc) in row[1]):
+				if (len(cc)>=1):					
+					if (getcc(cc) in row[1]) or ((getcc(cc) == "South Korea") and (row[1] == "Korea, South")):
 						c_prov=row[0]
 						c_country=row[1]
 						c_updated=row[2]
