@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.50 2020-03-19 10:12:58 PM
+#v0.52 2020-03-23 11:41:49 PM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -20,7 +20,7 @@ report=""
 cc="" #ISO 3166-1 Alpha-2
 pc="" #ISO 3166-2
 calc=""
-build="0.51"
+build="0.52"
 k_cnt=0
 cc_dict = {
 	"af" : "Afghanistan",
