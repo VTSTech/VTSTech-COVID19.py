@@ -7,7 +7,7 @@ My name is Nigel Todman, I'm a software developer from Canada. I've written a Py
 
 Screenshot: <img src="https://i.gyazo.com/49e85c5955e71c01daf9071348d32404.png">
 
-Data Source: https://github.com/CSSEGISandData/COVID-19
+Data Sources: JHU CSSE https://github.com/CSSEGISandData/COVID-19 , WHO Daily Situation Reports
 
 <i>Note: As of v0.52 this script now incorporates it's own copy of JHU CSSE COVID-19 Data
 

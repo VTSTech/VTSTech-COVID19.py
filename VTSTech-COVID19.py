@@ -3,9 +3,8 @@
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
-#git clone https://github.com/CSSEGISandData/COVID-19
-#cd COVID-19
-#wget https://github.com/Veritas83/VTSTech-COVID19.py/raw/master/VTSTech-COVID19.py
+#git clone https://github.com/Veritas83/VTSTech-COVID19.py
+#cd VTSTech-COVID19.py
 
 import os, sys, csv
 from os import listdir
