@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.52 2020-03-23 11:41:49 PM
+#v0.53 2020-03-26 9:38:26 PM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -19,7 +19,7 @@ report=""
 cc="" #ISO 3166-1 Alpha-2
 pc="" #ISO 3166-2
 calc=""
-build="0.52"
+build="0.53"
 k_cnt=0
 cc_dict = {
 	"af" : "Afghanistan",
@@ -206,7 +206,7 @@ cc_dict = {
 	"qa" : "Qatar",
 	"re" : "Reunion",
 	"ro" : "Romania",
-	"ru" : "Russian Federation" ,
+	"ru" : "Russia" ,
 	"rw" : "Rwanda" ,
 	"bl" : "Saint Barthelemy",
 	"sh" : "Saint Helena, Ascension and Tristan da Cunha",
@@ -740,7 +740,7 @@ def parsereport(report,calc):
 		for row in cssereader:
 			if (x!=0):
 				if (len(cc)>=1):					
-					if (getcc(cc) in row[1]) or ((getcc(cc) == "South Korea") and (row[1] == "Korea, South")):
+					if (getcc(cc) in row[1]) or ((getcc(cc) == "South Korea") and (row[1] == "Korea, South") or (getcc(cc) == "Russia") and (row[1] == "Russian Federation")):
 						c_prov=row[0]
 						c_country=row[1]
 						c_updated=row[2]
