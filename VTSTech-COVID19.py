@@ -1,5 +1,5 @@
 #COVID-19 JHU.EDU CSSE Data Analytics
-#v0.53 2020-03-26 9:38:26 PM
+#v0.54 2020-05-03 4:01:47 AM
 #Written by VTSTech (veritas@vts-tech.org)
 #John Hopkins University CSSE Data
 #
@@ -19,7 +19,7 @@ report=""
 cc="" #ISO 3166-1 Alpha-2
 pc="" #ISO 3166-2
 calc=""
-build="0.53"
+build="0.54"
 k_cnt=0
 cc_dict = {
 	"af" : "Afghanistan",
@@ -448,26 +448,47 @@ def parsereports(calc):
 				p_cases = 0
 				c_cases = 0
 				n_cases = []
-				davg_cases=0
+				tn_cases = 0
+				davg_cases = 0
+				lastweek = 0
+				d_cases = 0
 				for line in reports.split(".csv"):
 					line=line+".csv"
 					if (len(line)>4):
 						i=int(i)+1
-						p_cases = c_cases
-						c_cases = parsereport(line.replace("\n",""),"t")
-						new_cases=(c_cases - p_cases)
-						#print(new_cases)
-						davg_cases = (davg_cases+new_cases)/i
-					t_days=i				
+					t_days=i
+				lastweek=t_days-7
+				i=0
+				for line in reports.split(".csv"):
+					line=line+".csv"
+					if (len(line)>4):
+						i=int(i)+1
+						if (i>=lastweek):
+							if (i==lastweek):
+								p_cases = 0
+							else:
+								p_cases = c_cases
+							c_cases = parsereport(line.replace("\n",""),"t")
+							if (i==lastweek):
+								new_cases=(c_cases - p_cases)
+								d_cases = new_cases
+								#new_cases=0
+								tn_cases=tn_cases+new_cases
+							else:
+								new_cases=(c_cases - p_cases)
+								tn_cases=tn_cases+new_cases
+							#print(new_cases)
+							davg_cases = (tn_cases-d_cases)/7
+					t_days=i
 				if (len(cc)>=1):
-					print("National Average Daily New Cases:",round(davg_cases,2))
+					print("National Average Daily New Cases:",round(davg_cases,2), "(Past Week)")
 					print("\nCountry Filter:", getcc(cc))
 				elif (len(pc)>=1):
-					print("Average Daily New Cases:",round(davg_cases,2))
+					print("Average Daily New Cases:",round(davg_cases,2), "(Past Week)")
 					print("\nCountry Filter:", getcc(pc[0:2].lower()))
 					print("Prov/State Filter:", getpc(pc.upper()))
 				else:
-					print("Global Average Daily New Cases:",round(davg_cases,2))
+					print("Global Average Daily New Cases:",round(davg_cases,2), "(Past Week)")
 				print("\nCOVID-19 JHU.EDU CSSE Data Analytics v"+build+" by VTSTech Complete.")
 			elif (calc=="dad"):
 				p_deaths = 0
